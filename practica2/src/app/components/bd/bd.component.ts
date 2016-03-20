@@ -16,6 +16,7 @@ export class BdComponent implements OnInit {
   }
 
   ngOnInit(): void {
+///comentin
     this.Users=this.getUserfromback()
   }
   getUserfromback(){
