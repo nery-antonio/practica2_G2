@@ -1,0 +1,15 @@
+<table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Correo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of Users">
+        <th scope="row">{{user.name}}</th>
+        <td>{{user.mail}}</td>
+        
+      </tr>
+    </tbody>
+  </table>

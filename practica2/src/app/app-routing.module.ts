@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {RegisterComponent} from './components/register/register.component';
 import { CrearsubscripcionComponent } from './components/crearsubscripcion/crearsubscripcion.component';
+import {BdComponent} from './components/bd/bd.component';
 
 const routes: Routes = [
   {
@@ -9,6 +10,9 @@ const routes: Routes = [
     component: CrearsubscripcionComponent
   },
   {path:"register", component:RegisterComponent}
+];
+const routes: Routes = [
+  {path:"users", component:BdComponent}
 ];
 
 @NgModule({
