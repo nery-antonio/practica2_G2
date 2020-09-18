@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { RegisterComponent } from './components/register/register.component';
 import { FormsModule} from '@angular/forms';
 import { RegisterServiceService } from './services/register-service.service';
+import { CrearsubscripcionComponent } from './crearSuscripcion/crearsubscripcion/crearsubscripcion.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegisterComponent
+    RegisterComponent,
+    CrearsubscripcionComponent
   ],
   imports: [
     BrowserModule,
