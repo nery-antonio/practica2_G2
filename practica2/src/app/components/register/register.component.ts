@@ -1,8 +1,6 @@
-import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { RegisterServiceService } from 'src/app/services/register-service.service';
-
-import db_users from '../../../assets/JSON/Users.json'
+import { RegisterServiceService } from 'src/app/services/register/register-service.service';
+import {User} from '../../models/Users';
 
 @Component({
   selector: 'app-register',
@@ -50,14 +48,15 @@ export class RegisterComponent implements OnInit {
     if(this.validarFormatoUsuario(this.nombre)
     && this.validarContrasenia(this.pass)
     && this.validarExistenciaUsuario(this.nombre)){
-      let nuevo_usuario = {
+      let nuevo_usuario:User = {
+        tipo:"Basico",
         name:this.nombre,
-        pass:this.pass,
-        email:this.email
+        password:this.pass,
+        mail:this.email,
+        suscripcion_creada:[]
       }
 
       this.putUser(nuevo_usuario);
-
       return nuevo_usuario;
 
     }else{

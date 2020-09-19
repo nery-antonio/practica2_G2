@@ -5,8 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './components/register/register.component';
 import { FormsModule} from '@angular/forms';
-import { RegisterServiceService } from './services/register-service.service';
-import { CrearsubscripcionComponent } from './crearSuscripcion/crearsubscripcion/crearsubscripcion.component';
+import { RegisterServiceService } from './services/register/register-service.service';
+import { CrearsubscripcionComponent } from './components/crearsubscripcion/crearsubscripcion.component';
 
 @NgModule({
   declarations: [
