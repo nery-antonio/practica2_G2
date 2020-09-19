@@ -8,7 +8,9 @@ import {tiposSuscripcion} from '../../tipos/suscripciones';
 })
 export class CrearsubscripcionComponent implements OnInit {
   tipoSuscripcion:String[];
-  nombreUsuario:String;
+
+  correoUsuario:String;
+
   nombreSuscripcion:String = "";
   descripcion:String = "";
   precio:Number;
@@ -29,5 +31,13 @@ export class CrearsubscripcionComponent implements OnInit {
 
   capturar(tipoSeleccionado):void{
     this.tipoSeleccionado = tipoSeleccionado;
+  }
+
+  crear(){
+    
+  }
+
+  suma(num1,num2:number):Number{
+    return num1+num2;
   }
 }
