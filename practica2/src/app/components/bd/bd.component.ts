@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import listusers from 'src/assets/JSON/Users.json';//se importa el archivo
+import {users} from 'src/app/components/bd/bd'
 
 @Component({
   selector: 'app-bd',
@@ -8,10 +8,15 @@ import listusers from 'src/assets/JSON/Users.json';//se importa el archivo
   styleUrls: ['./bd.component.css']
 })
 export class BdComponent implements OnInit {
-  Users: any = listusers;//se crea la variable
-  constructor() { }
+  Users: any = users.Users;
+  
+  constructor() { 
+    
+  }
 
   ngOnInit(): void {
+
   }
+  
 
 }
