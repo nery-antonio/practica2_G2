@@ -21,6 +21,7 @@
     "@angular/router": "~10.1.2",
     "@types/write-json-file": "^3.2.1",
     "file-saver": "^2.0.2",
+    "karma-mocha-reporter": "^2.2.5",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "write-json-file": "^4.3.0",

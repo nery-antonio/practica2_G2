@@ -1,5 +1,8 @@
 import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { RegisterServiceService } from 'src/app/services/register-service.service';
+
+import db_users from '../../../assets/JSON/Users.json'
 
 @Component({
   selector: 'app-register',
@@ -12,13 +15,21 @@ export class RegisterComponent implements OnInit {
   pass:string;
   email:string;
 
-  constructor() { }
+  constructor(private register:RegisterServiceService) { }
 
   ngOnInit(): void {
   }
 
-  validarFormatoUsuario(usrname):boolean{
-    if(/([a-z][A-Za-z0-9])\w*/g.test(usrname)){
+  validarExistenciaUsuario(usrname:string):boolean{
+    if(this.register.existe(usrname)){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  validarFormatoUsuario(usrname:string):boolean{
+    if(/[a-zA-Z][A-Za-z0-9]+/.test(usrname)){
       return true;
     }else{
       return false;
@@ -33,24 +44,31 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  validarFormatoCorreo(email):boolean{
-    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3,4})+$/.test(email)){
-      return true;
-     } else {
-      return false;
-     }
-  }
-
 
   registrar(){
 
-    let nuevo_usuario = {
-      name:this.nombre,
-      pass:this.pass,
-      email:this.email
-    }
+    if(this.validarFormatoUsuario(this.nombre)
+    && this.validarContrasenia(this.pass)
+    && this.validarExistenciaUsuario(this.nombre)){
+      let nuevo_usuario = {
+        name:this.nombre,
+        pass:this.pass,
+        email:this.email
+      }
 
-    
+      this.putUser(nuevo_usuario);
+
+      return nuevo_usuario;
+
+    }else{
+      alert("formato no valido");
+      return null;
+    }
+  }
+
+  putUser(nuevo_usuario){
+
+        console.log(this.register.signup(nuevo_usuario));
   }
 
 }
