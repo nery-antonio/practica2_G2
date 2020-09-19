@@ -1,0 +1,40 @@
+[ 
+  {
+     "tipo":"Admin", 
+     "name":"admin", 
+     "password":"admin", 
+     "mail":"admin@gmail.com",
+     "suscripcion_creada":[
+          {
+              "nombre":"Netflix",
+              "descripcion":"Es la de netflix perro",
+              "precio":1567895,
+              "tipo":"Premium",
+              "suscritos":["abner@gmail.com"]
+          }
+      ]
+  }, 
+  { 
+      "tipo":"Admin",
+      "name":"admindos", 
+      "password":"admindos", 
+      "mail":"admindos@gmail.com",
+      "suscripcion_creada":[
+          {
+              "nombre":"Amazon prime",
+              "descripcion":"Soy la competencia del netflix hijo!",
+              "precio":50,
+              "tipo":"Premium",
+              "suscritos":["abner@gmail.com"]
+          }
+      ]
+  }, 
+  { 
+      "tipo":"Normal",
+      "name":"abner", 
+      "password":"abner", 
+      "mail":"abner@gmail.com",
+      "suscripcion_creada":[
+      ]
+  } 
+]
