@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RegisterComponent } from './register.component';
-import { RegisterServiceService} from '../../services/register-service.service'
-import { StorageService } from 'src/app/services/storage.service';
+import { RegisterServiceService} from '../../services/register/register-service.service'
+import { StorageService } from '../../services/storage/storage.service';
 
 
 describe('RegisterComponent', () => {

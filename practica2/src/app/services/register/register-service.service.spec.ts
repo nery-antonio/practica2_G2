@@ -2,7 +2,7 @@ import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { TestBed } from '@angular/core/testing';
 
 import { RegisterServiceService } from './register-service.service';
-import { StorageService} from './storage.service'
+import { StorageService} from '../storage/storage.service'
 
 class MockStorageService{
     registered = true;

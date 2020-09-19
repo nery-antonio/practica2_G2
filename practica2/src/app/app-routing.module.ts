@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {RegisterComponent} from './components/register/register.component';
-import { CrearsubscripcionComponent } from './crearSuscripcion/crearsubscripcion/crearsubscripcion.component';
+import { CrearsubscripcionComponent } from './components/crearsubscripcion/crearsubscripcion.component';
 
 const routes: Routes = [
   {
