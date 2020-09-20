@@ -13,7 +13,9 @@ export class LoginComponent implements OnInit {
 
   public email: string;
   public password: string;
-  constructor(private router: Router, public loginService: LoginService) { }
+  constructor(private router: Router, public loginService: LoginService) {
+
+  }
 
 
   ngOnInit(): void {
@@ -21,19 +23,21 @@ export class LoginComponent implements OnInit {
 
   public iniciarSesion() {
     localStorage.removeItem('mail');
-    if (this.comprobarCampos(this.email, this.password) && this.comprobarEmail(this.email) == 1) {
-      let usuario:User = this.loginService.getUser(this.email, this.password);
-      if (usuario != null) {
-        localStorage.setItem('mail', this.email);
-        if (usuario.tipo == 'Admin') {
-          //aca se redirecciona al panel de admin
-          this.router.navigate(['/register']);
+    if (this.comprobarCampos(this.email, this.password)) {
+      if (this.comprobarEmail(this.email) == 1) {
+        let usuario: User = this.loginService.getUser(this.email, this.password);
+        if (usuario != null) {
+          localStorage.setItem('mail', this.email);
+          if (usuario.tipo == 'Admin') {
+            //aca se redirecciona al panel de admin
+            this.router.navigate(['/crearsuscripcion']);
 
-        } else {
-          //aca se redirecciona al panel de normal
-          this.router.navigate(['/register']);
+          } else {
+            //aca se redirecciona al panel de normal
+            this.router.navigate(['/register']);
+          }
+          return 'En Buen Estado';
         }
-        return 'En Buen Estado';
       }
     }
     return 'En Mal Estado';
