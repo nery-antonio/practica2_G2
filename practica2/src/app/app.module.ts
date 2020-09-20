@@ -13,7 +13,7 @@ import { BdComponent } from './components/bd/bd.component';
   declarations: [
     AppComponent,
     RegisterComponent,
-    CrearsubscripcionComponent
+    CrearsubscripcionComponent,
     AppComponent,
     BdComponent
   ],
