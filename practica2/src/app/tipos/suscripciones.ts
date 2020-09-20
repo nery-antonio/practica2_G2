@@ -1,0 +1,1 @@
+export const tiposSuscripcion:String[] = ["Premium","Basico"];
