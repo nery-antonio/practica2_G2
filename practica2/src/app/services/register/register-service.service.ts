@@ -1,7 +1,7 @@
 import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import {StorageService} from './storage.service';
+import {StorageService} from '../storage/storage.service';
 
 @Injectable({
   providedIn: 'root'
