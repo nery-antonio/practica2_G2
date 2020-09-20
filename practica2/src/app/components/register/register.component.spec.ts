@@ -1,28 +1,39 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 
 import { RegisterComponent } from './register.component';
 import { RegisterServiceService} from '../../services/register/register-service.service'
 import { StorageService } from '../../services/storage/storage.service';
-
+import { RouterTestingModule } from '@angular/router/testing';
+import { Router, Routes } from '@angular/router';
+import { LoginComponent } from '../login/login.component';
+import { Location } from '@angular/common';
 
 describe('RegisterComponent', () => {
   let component: RegisterComponent;
   let service : RegisterServiceService;
   let storage_serv: StorageService;
   let fixture: ComponentFixture<RegisterComponent>;
+  let router:Router;
+  let location:Location;
 
+  const routes: Routes = [
+    { path: 'login', component: LoginComponent }
+  ];
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RegisterComponent ]
+      declarations: [ RegisterComponent],
+      imports:[RouterTestingModule.withRoutes(routes)]
     })
     .compileComponents();
 
 
-
+    router = TestBed.inject(Router);
+    location = TestBed.inject(Location);
+    router.initialNavigation();
     storage_serv = new StorageService();
     service = new RegisterServiceService(storage_serv);
-    component = new RegisterComponent(service);
+    component = new RegisterComponent(service,router);
     
   });
 
@@ -101,7 +112,14 @@ describe('RegisterComponent', () => {
     let user_obj;
     component.putUser(user_obj)
     expect(metodollamada).toHaveBeenCalled();
-  })
-
-
+  });
+  
+  //Esta prueba unitaria la hizo Abner Cardona
+  it('navegar de register a login', fakeAsync(() => {
+    //router.navigate(['/login']);
+    component.irIniciarSesion();
+    tick(50);
+    expect(location.path()).toBe('/login');
+  }));
+  
 });

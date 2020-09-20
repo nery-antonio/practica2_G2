@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RegisterServiceService } from '../../services/register/register-service.service';
 import {User} from '../../models/Users';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -9,41 +10,41 @@ import {User} from '../../models/Users';
 })
 export class RegisterComponent implements OnInit {
 
-  nombre:any;
-  pass:string;
-  email:string;
+  nombre: any;
+  pass: string;
+  email: string;
 
-  constructor(private register:RegisterServiceService) { }
+  constructor(private register: RegisterServiceService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  validarExistenciaUsuario(usrname:string):boolean{
-    if(this.register.existe(usrname)){
+  validarExistenciaUsuario(usrname: string): boolean {
+    if (this.register.existe(usrname)) {
       return true;
-    }else{
+    } else {
       return false;
     }
   }
 
-  validarFormatoUsuario(usrname:string):boolean{
-    if(/[a-zA-Z][A-Za-z0-9]+/.test(usrname)){
+  validarFormatoUsuario(usrname: string): boolean {
+    if (/[a-zA-Z][A-Za-z0-9]+/.test(usrname)) {
       return true;
-    }else{
+    } else {
       return false;
     }
   }
 
-  validarContrasenia(pass:string):boolean{
-    if(pass.length >= 8){
+  validarContrasenia(pass: string): boolean {
+    if (pass.length >= 8) {
       return true;
-    }else{
+    } else {
       return false;
     }
   }
 
 
-  registrar(){
+  registrar() {
 
     if(this.validarFormatoUsuario(this.nombre)
     && this.validarContrasenia(this.pass)
@@ -59,15 +60,17 @@ export class RegisterComponent implements OnInit {
       this.putUser(nuevo_usuario);
       return nuevo_usuario;
 
-    }else{
+    } else {
       alert("formato no valido");
       return null;
     }
   }
+  irIniciarSesion() {
+    this.router.navigate(['/login']);
+  }
+  putUser(nuevo_usuario) {
 
-  putUser(nuevo_usuario){
-
-        console.log(this.register.signup(nuevo_usuario));
+    console.log(this.register.signup(nuevo_usuario));
   }
 
 }
