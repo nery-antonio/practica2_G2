@@ -13,8 +13,6 @@ import { Router } from '@angular/router';
 export class CrearsubscripcionComponent implements OnInit {
   tipoSuscripcion:String[];
 
-  correoUsuario:String;
-
   nombreSuscripcion:String = "";
   descripcion:String = "";
   precio:Number;
@@ -60,7 +58,7 @@ export class CrearsubscripcionComponent implements OnInit {
     }
     if(suscripcion.nombre == "")
       this.mensajeError = "Falta colocar un nombre a la suscripcion";
-    else if(suscripcion.precio < 0)
+    else if(suscripcion.precio < 0 || suscripcion.precio == null)
       this.mensajeError = "El precio no debe ser menor a 1";
     else if(suscripcion.tipo == null)
       this.mensajeError = "Debe seleccionar un tipo de suscripcion valido";
@@ -70,12 +68,20 @@ export class CrearsubscripcionComponent implements OnInit {
   }
 
   crear():boolean{
-    if(this.service.validarUsuarioAsAdmin(this.correoUsuario)){
+    if(this.service.validarUsuarioAsAdmin(localStorage.getItem("mail"))){
       let suscripcion:Suscripcion = this.validarFormatoSuscripcion();
-      if(suscripcion)
-         return this.service.agregarSuscripcion(this.correoUsuario,suscripcion);
-    }
+      if(suscripcion){
+        this.mensajeError = "No fue posible agregar suscripcion";
+        return this.service.agregarSuscripcion(localStorage.getItem("mail"),suscripcion);
+      }
+    }else
+      this.mensajeError = "El usuario no es admin no se como estas aqui";
     return false;
   }
 
+  botonCrear(siCreado:boolean){
+    console.log(bd.bdUsers);
+    if(siCreado)
+      this.mensajeError = "Se crea correctamente la suscripcion aqui deberia redirigir";
+  }
 }

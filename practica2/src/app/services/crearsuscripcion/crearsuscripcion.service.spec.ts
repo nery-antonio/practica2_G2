@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { User } from 'src/app/models/Users';
+import { User } from '../../models/Users';
 
 import { CrearsuscripcionService } from './crearsuscripcion.service';
 

@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Router, Routes } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
-import { CrearsuscripcionService } from 'src/app/services/crearsuscripcion/crearsuscripcion.service';
+import { CrearsuscripcionService } from '../../services/crearsuscripcion/crearsuscripcion.service';
 import { RegisterComponent } from '../register/register.component';
 
 import { CrearsubscripcionComponent } from './crearsubscripcion.component';
@@ -87,15 +87,19 @@ describe('CrearsubscripcionComponent', () => {
     component.descripcion = "Descripcion";
     component.tipoSeleccionado = "Premium";
     component.nombreSuscripcion = "Suscripcion de prueba";
-    component.correoUsuario = "admindos@gmail.com";
     expect(component.crear()).toBeTrue();
-    component.correoUsuario = "hola";
     mockCrearSuscripcionService.validarUsuarioAsAdmin = jasmine.createSpy().and.returnValue(false);
     expect(component.crear()).toBeFalse();
     mockCrearSuscripcionService.validarUsuarioAsAdmin = jasmine.createSpy().and.returnValue(true);
-    component.correoUsuario = "admindos@gmail.com";
     component.precio = -10;
     expect(component.crear()).toBeFalse();
   })
 
+  it('cuando presiono boton crear test',()=>{
+    component.botonCrear(true);
+    expect(component.mensajeError).toEqual("Se crea correctamente la suscripcion aqui deberia redirigir");
+    component.mensajeError = "Hubo un error en crear";
+    component.botonCrear(false);
+    expect(component.mensajeError).not.toEqual("Se crea correctamente la suscripcion aqui deberia redirigir");
+  })
 });
