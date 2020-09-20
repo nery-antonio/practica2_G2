@@ -9,7 +9,7 @@ import { FormsModule} from '@angular/forms';
 import { RegisterServiceService } from './services/register/register-service.service';
 import { CrearsubscripcionComponent } from './components/crearsubscripcion/crearsubscripcion.component';
 import { LoginComponent } from './components/login/login.component';
-import { FormsModule } from '@angular/forms';
+import { LoginService } from './services/login/login.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +25,8 @@ import { FormsModule } from '@angular/forms';
     FormsModule
   ],
   providers: [
-    RegisterServiceService
+    RegisterServiceService,
+    LoginService
   ],
   bootstrap: [AppComponent]
 })
