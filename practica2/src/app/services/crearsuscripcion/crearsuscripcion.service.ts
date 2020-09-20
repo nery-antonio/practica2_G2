@@ -30,10 +30,12 @@ export class CrearsuscripcionService {
   }
 
   public agregarSuscripcion(correo:String,suscripcion:Suscripcion):boolean{
-    for(let user of bd.bdUsers){
-      if(user.mail === correo && user.tipo === "Admin"){
-        user.suscripcion_creada.push(suscripcion);
-        return true;
+    if(this.obtenerSuscripcion(suscripcion.nombre) == null){
+      for(let user of bd.bdUsers){
+        if(user.mail === correo && user.tipo === "Admin"){
+          user.suscripcion_creada.push(suscripcion);
+          return true;
+        }
       }
     }
     return false;

@@ -3,36 +3,6 @@ import { User } from '../../models/Users';
 
 import { CrearsuscripcionService } from './crearsuscripcion.service';
 
-class MockBD{
-  public static bdUsers:User[] = [{
-    tipo:"Admin",
-    name:"Brian",
-    mail:"otraprueba@sinsuscripcion.com",
-    password:"12345678",
-    suscripcion_creada:[]
-  },
-  {
-    tipo:"Admin",
-    name:"Tomo",
-    mail:"prueba@consuscripcion.com",
-    password:"12345678",
-    suscripcion_creada:[{
-      "nombre":"Suscripcion",
-      "descripcion":"Este usuario tiene una suscripcion",
-      "precio":0,
-      "tipo":"Premium",
-      "suscritos":["prueba@prueba.com"]
-    }]
-  },
-  {
-    tipo:"Normal",
-    name:"Daniel",
-    mail:"prueba@prueba.com",
-    password:"12345678",
-    suscripcion_creada:[]
-  }];
-}
-
 describe('CrearsuscripcionService', () => {
   let service: CrearsuscripcionService;
 
@@ -68,6 +38,13 @@ describe('CrearsuscripcionService', () => {
       "suscritos":[]
     })).toBeTruthy();
     expect(service.obtenerSuscripcion("Nueva suscripcion")).not.toBeNull();
+    expect(service.agregarSuscripcion("admin@gmail.com",{
+      "nombre":"Nueva suscripcion",
+      "descripcion":"Este es una suscripcion de prueba",
+      "precio":0,
+      "tipo":"Premium",
+      "suscritos":[]
+    })).toBeFalsy();
   });
 
   it('agregar suscripcion invalida test', () =>{
