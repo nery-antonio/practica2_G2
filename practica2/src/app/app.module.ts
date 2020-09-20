@@ -7,12 +7,15 @@ import { RegisterComponent } from './components/register/register.component';
 import { FormsModule} from '@angular/forms';
 import { RegisterServiceService } from './services/register/register-service.service';
 import { CrearsubscripcionComponent } from './components/crearsubscripcion/crearsubscripcion.component';
+import { BdComponent } from './components/bd/bd.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
-    CrearsubscripcionComponent
+    CrearsubscripcionComponent,
+    AppComponent,
+    BdComponent
   ],
   imports: [
     BrowserModule,
