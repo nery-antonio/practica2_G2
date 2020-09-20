@@ -15,7 +15,8 @@ describe('LoginService', () => {
   });
 
   it('prueba del servicio', () => {
-    expect(service.getUser('abner@gmail.com', 'abner')).not.toBeNull();
+    console.log('Estoy aca!');
+    expect(service.getUser('admin@gmail.com', 'admin')).not.toBeNull();
   });
 
   it('prueba de falla servicio', () => {

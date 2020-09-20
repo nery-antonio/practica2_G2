@@ -40,6 +40,10 @@ describe('MostrarusuariosService', () => {
   it('No tiene que haber  un usuario administrador', ()=>{
     expect(service.isemptybase([])).toBe(true,'No existe un admin');
   });
-
- 
+  it('debe estar vacia la base de datos', ()=>{
+    let varAux = bd.bdUsers;
+    bd.bdUsers = [];
+    expect(service.getUser()).toBeNull();
+    bd.bdUsers= varAux;
+  });
 });

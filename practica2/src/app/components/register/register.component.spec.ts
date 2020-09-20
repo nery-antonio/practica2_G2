@@ -49,6 +49,7 @@ describe('RegisterComponent', () => {
 
   it('validacion Registro correcto', ()=>{
     
+    
       component.nombre= "user"
       component.pass="userpass"
       component.email="user@user.com"
