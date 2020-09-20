@@ -34,20 +34,12 @@ describe('MostrarusuariosService', () => {
   });
 
   it('Tiene que exister al menos un usuario administrador', ()=>{
-    expect(service.existoneadmin([])).toBeFalse();
+    expect(service.existoneadmin([])).toBe(false,'No existe usuario alguno');;
   });
 
   it('No tiene que haber  un usuario administrador', ()=>{
-    expect(service.isemptybase([])).toBeTrue();
+    expect(service.isemptybase([])).toBe(true,'No existe un admin');
   });
 
-  it('No se puede eliminar un usuario de tipo administrador', ()=>{
-    let correo_admin='admin@gmail.com'
-    expect(service.deleteuser(correo_admin)).toBeFalse();
-  })
-
-  it('Eliminado usuario no administrador', ()=>{
-    let correo_admin='abner@gmail.com'
-    expect(service.deleteuser(correo_admin)).toBeFalse();
-  })
+ 
 });
