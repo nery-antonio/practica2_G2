@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import {users} from 'src/app/components/bd/bd'
+import { MostrarusuariosService} from 'src/app/services/mostrarusuarios/mostrarusuarios.service';
+
 
 @Component({
   selector: 'app-bd',
@@ -8,15 +9,24 @@ import {users} from 'src/app/components/bd/bd'
   styleUrls: ['./bd.component.css']
 })
 export class BdComponent implements OnInit {
-  Users: any = users.Users;
+  Users: any 
   
-  constructor() { 
+  constructor(private mostrar:MostrarusuariosService) { 
     
   }
 
   ngOnInit(): void {
-
+    this.Users=this.getUserfromback()
   }
-  
+  getUserfromback(){
+    return this.mostrar.getUser();
+  }
+  deleteuser(correo:string){
+    let confirmacion=this.mostrar.deleteuser(correo);
+    if (confirmacion)
+      alert('Usuario eliminado con exito');
+    else alert('Imposible eliminar el usuario');
+    return confirmacion;
+  }
 
 }

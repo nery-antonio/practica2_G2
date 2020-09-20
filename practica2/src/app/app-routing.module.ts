@@ -9,11 +9,10 @@ const routes: Routes = [
     path: "crearsuscripcion", 
     component: CrearsubscripcionComponent
   },
-  {path:"register", component:RegisterComponent}
-];
-const routes: Routes = [
+  {path:"register", component:RegisterComponent},
   {path:"users", component:BdComponent}
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
